@@ -1,0 +1,3 @@
+# Introduction to expert-system-clj
+
+TODO: write [great documentation](http://jacobian.org/writing/what-to-write/)
