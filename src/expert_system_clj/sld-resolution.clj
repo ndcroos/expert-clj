@@ -3,7 +3,7 @@
 ((P x x))
 ((Q a b))))
 
-(defn LookUp (x environment)
+(defn LookUp [x environment]
 (cond ((null x) nil)
 ((Variable? x)
 (let ((binding (Lookup (GetBinding x environment)
@@ -12,17 +12,17 @@ environment)))
 (t binding))))
 (t x)))
 
-(defn GetBinding (var environment)
+(defn GetBinding [var environment]
 (first (rassoc var environment :test #’equal)))
 
-(defn AddBinding (var term environment)
+(defn AddBinding [var term environment]
 (cons (cons term var) environment))
 
 ;; Starts the resolution process.
-(defn Prove (goals)
+(defn Prove [goals]
 (Resolution (list goals) ’(0) 1 nil))
 
-(defn Resolution (goals level-list level environment)
+(defn Resolution [goals level-list level environment]
 (cond ((null goals) environment)
 ((null (first goals))
 (Resolution (rest goals)
@@ -60,7 +60,8 @@ environment))
 (1+ level)
 env2))))))
 
-(defn Unify (x y environment)
+;
+(defn Unify [x y environment-
 (let ((x (LookUp x environment))
 (y (LookUp y environment)))
 (cond ((equal x y) environment)
@@ -77,17 +78,22 @@ env2))))))
 (Unify (RestExpr x)
 (RestExpr y) environment))))))
 
-(defn Name (x)
+;
+(defn Name [x]
 (cadr x))
 
-(defn Variable? (x)
+;
+(defn Variable? [x]
 (member (Name x) ’(u v w x y z)))
 
-(defn Constant? (x)
+;             
+(defn Constant? [x]
 (atom (Name x)))
 
-(defn FirstExpr (x)
+;            
+(defn FirstExpr [x]
 (list (first x) (caadr x)))
 
+;             
 (defn RestExpr (x)
 (list (first x) (cdadr x)))
