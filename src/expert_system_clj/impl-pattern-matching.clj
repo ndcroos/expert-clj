@@ -1,5 +1,5 @@
 ;;
-(defn Match (pattern fact environment)
+(defn Match [pattern fact environment]
     ;;
     (cond ((and (null pattern) (null fact)) environment)
     ((or (null pattern) (null fact)) ’FAIL)
@@ -27,7 +27,7 @@ fact environment)))))))))
 
 
 ;;
-(defn Bind? (var data env)
+(defn Bind? [var data env]
 (let ((binding (LookUp var env)))
 (if (null binding)
 (cons (list var data) env) ; no binding in environment
@@ -38,17 +38,17 @@ env
 
 ;;
 (defn Bind! (var rpattern fact env)
-(if (null fact) ’FAIL
-(let* ((ff (first fact))
-(rf (rest fact))
-(new-env1 (Add var ff env))
-(new-env2 (Match rpattern rf new-env1)))
-(if (eq new-env2 ’FAIL)
-(Bind! var rpattern rf new-env1)
-new-env2))))
+    (if (null fact) ’FAIL
+    (let* ((ff (first fact))
+    (rf (rest fact))
+    (new-env1 (Add var ff env))
+    (new-env2 (Match rpattern rf new-env1)))
+    (if (eq new-env2 ’FAIL)
+    (Bind! var rpattern rf new-env1)
+    new-env2))))
 
 ;;
-(defn Add (var data env)
+(defn Add [var data env]
     (let ((binding (assoc var env)))
     (cond ((null binding) (cons (list var data) env))
     (t (rplacd binding
@@ -56,9 +56,9 @@ new-env2))))
     env))))
 
 ;;
-(defn LookUp (key a-list)
+(defn LookUp [key a-list]
     (rest (assoc key a-list)))}
 
 ;;
-(defn Replace (binding pattern)
+(defn Replace [binding pattern]
     (append binding (rest pattern)))
