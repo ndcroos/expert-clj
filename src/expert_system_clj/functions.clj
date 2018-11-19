@@ -24,9 +24,9 @@
 
 
 (defn InsideSubst (var w)
-(if w
-(or (eq var (Variable (first w)))
-(InsideSubst var (rest w)))))
+  (if w
+  (or (eq var (Variable (first w)))
+  (InsideSubst var (rest w)))))
 
 
 (defn Unify (exp1 exp2)
@@ -55,6 +55,6 @@ otherwise: both exp1 and exp2 are compound
 ; not unifiable
 
 (defun OccurCheck (var term)
-(if (Inside var term) ’FAIL
-(list (cons term var))))
+  (if (Inside var term) ’FAIL
+  (list (cons term var))))
 ; return binding
