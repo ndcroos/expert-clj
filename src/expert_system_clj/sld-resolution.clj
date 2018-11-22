@@ -28,17 +28,17 @@
 
 (defn resolution 
     [goals level-list level environment]
-(cond ((null goals) environment)
-((null (first goals))
-(resolution (rest goals)
-(rest level-list)
-level
-environment))
-(t (let ((goal-atom (list (first level-list)
-(first-goal goals)))
-(rest-goals (but-first goals)))
-(resolve-unit goal-atom
-rest-goals
+    (cond ((null goals) environment)
+    ((null (first goals))
+    (resolution (rest goals)
+    (rest level-list)
+    level
+    environment))
+    (t (let ((goal-atom (list (first level-list)
+    (first-goal goals)))
+    (rest-goals (but-first goals)))
+    (resolve-unit goal-atom
+    rest-goals
 
 ;; Checkers wether selected atom goal is unifiable with one of the heads from the variable clause-set
 (defn resolve-unit 
