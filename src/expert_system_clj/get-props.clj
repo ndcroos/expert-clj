@@ -1,11 +1,14 @@
 ;;
-(defn Goal? [var]
-(eq (get var ’class) ’goal))
+(defn goal? 
+    [var]
+    (eq (get var ’class) ’goal))
 
 ;;
-(defn Traced? [var]
-(get var ’traced))
+(defn traced? 
+    [var]
+    (get var ’traced))
 
 ;;
-(defn GetPrompt [var]
-(get var ’prompt))
+(defn get-prompt 
+    [var]
+    (get var ’prompt))
