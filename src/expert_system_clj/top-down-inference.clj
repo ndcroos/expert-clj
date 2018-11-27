@@ -24,7 +24,7 @@
 
 ;;
 (defn Parse (knowledge-base)
-(let ((exp (ReadExpression knowledge-base)))
+(let [(exp (ReadExpression knowledge-base))]
 (cond ((eq expr ’eof) nil)
 (t (case (first expr)
 (def (ParseDecl (rest expr)))
@@ -37,7 +37,7 @@
 
 ;;
 (defn ParseDecl (expr)
-(let ((variable (first expr))
+(let [(variable (first expr)]
 (spec (rest expr)))
 (setf (get variable ’prompt) (Prompt spec)
 (get variable ’class) (Class spec)
