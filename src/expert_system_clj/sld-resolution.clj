@@ -7,7 +7,7 @@
     [x environment]
     (cond ((null x) nil)
     ((variable? x)
-    (let ((binding (lookup (get-binding x environment)
+    (let [(binding (lookup (get-binding x environment]
     environment)))
     (cond ((null binding) x)
     (t binding))))
@@ -51,7 +51,7 @@
     (env2 nil))
     ((or (null clause)
     (not (eq result ’FAIL))) result)
-    (let ((head (first clause))
+    (let [(head (first clause)]
     (body (rest clause)))
     (setq env2 (Unify goal
     (list level head)
@@ -64,7 +64,7 @@
 
 ;
 (defn unify [x y environment-
-    (let ((x (look-up x environment))
+    (let [(x (look-up x environment)]
     (y (look-up y environment)))
     (cond ((equal x y) environment)
     ((variable? x) (add-binding x y environment))
