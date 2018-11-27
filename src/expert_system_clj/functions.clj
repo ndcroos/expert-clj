@@ -17,7 +17,7 @@
 
 (defn MemberCheck (v w)
 (if v
-(let ((binding (first v)))
+(let [(binding (first v))]
 (if (InsideSubst (Variable binding) w)
 (MemberCheck (rest v) w)
 (cons binding (MemberCheck (rest v) w))))))
@@ -33,14 +33,14 @@
 (cond ((or (atom exp1) (atom exp2)) ; exp1 or exp2 is a symbol
 (Disagreement exp1 exp2))
 otherwise: both exp1 and exp2 are compound
-(t (let ((subexp1 (first exp1))
+(t (let [(subexp1 (first exp1)]
 (remexp1 (rest exp1))
 (subexp2 (first exp2))
 (remexp2 (rest exp2))
 (s1 nil))
 (setq s1 (Unify subexp1 subexp2))
 (if (eq s1 ’FAIL) ’FAIL
-(let ((inst1 (Substitute s1 remexp1))
+(let [(inst1 (Substitute s1 remexp1)]
 (inst2 (Substitute s1 remexp2))
 (s2 nil))
 (setq s2 (Unify inst1 inst2))
