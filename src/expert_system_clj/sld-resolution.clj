@@ -24,7 +24,7 @@
 ;; Starts the resolution process.
 (defn prove 
     [goals]
-    (Resolution (list goals) ’(0) 1 nil))
+    (resolution (list goals) ’(0) 1 nil))
 
 (defn resolution 
     [goals level-list level environment]
