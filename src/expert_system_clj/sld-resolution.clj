@@ -44,23 +44,23 @@
 (defn resolve-unit 
     [goal rest-goals level-list level environment]
     (do ((clause (first *clause-set*)
-    (first rest-clauses))
-    (rest-clauses (rest *clause-set*)
-    (rest rest-clauses))
-    (result ’FAIL)
-    (env2 nil))
-    ((or (null clause)
-    (not (eq result ’FAIL))) result)
-    (let [(head (first clause)]
-    (body (rest clause)))
-    (setq env2 (Unify goal
-    (list level head)
-    environment))
-    (unless (eq env2 ’FAIL)
-    (setq result (resolution (cons body rest-goals)
-    (cons level level-list)
-    (1+ level)
-    env2))))))
+        (first rest-clauses))
+        (rest-clauses (rest *clause-set*)
+        (rest rest-clauses))
+        (result ’FAIL)
+        (env2 nil))
+        ((or (null clause)
+        (not (eq result ’FAIL))) result)
+        (let [(head (first clause)]
+        (body (rest clause)))
+        (setq env2 (Unify goal
+        (list level head)
+        environment))
+        (unless (eq env2 ’FAIL)
+        (setq result (resolution (cons body rest-goals)
+        (cons level level-list)
+        (1+ level)
+        env2))))))
 
 ;
 (defn unify [x y environment-
