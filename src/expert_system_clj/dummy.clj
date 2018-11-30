@@ -1,26 +1,37 @@
-(defun SetTraced (var)
-(setf (get var ’traced) t))
+(defn set-traced 
+    [var]
+    (setf (get var ’traced) t))
 
-(defun ParseRule (expr)
-(setq *rule-base* (cons expr *rule-base*)))
+(defn parse-rule 
+    [expr]
+    (setq *rule-base* (cons expr *rule-base*)))
 
 
-(defun FirstRule (rule-base)
-(first rule-base))
-(defun RestRules (rule-base)
-(rest rule-base))
+(defun first-rule 
+    [rule-base]
+    (first rule-base))
 
-(defun Antecedent (rule)
-(first rule))
-(defun Consequent (rule)
-(rest rule))
+(defn rest-rules 
+    [rule-base]
+    (rest rule-base))
 
-(defun FirstConclusion (conseq)
-(first conseq))
-(defun RestConclusions (conseq)
-(rest conseq))
+(defn antecedent 
+    [rule]
+    (first rule))
 
-(defun Var (assertion)
+(defn consequent 
+    [rule]
+    (rest rule))
+
+(defn first-conclusion 
+    [conseq]
+    (first conseq))
+
+(defn rest-conclusions 
+    [conseq]
+    (rest conseq))
+
+(defun var (assertion)
 (second assertion))
 
 (defun Consultation (var-decls)
